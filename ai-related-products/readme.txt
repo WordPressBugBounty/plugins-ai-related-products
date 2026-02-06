@@ -4,8 +4,8 @@ Tags: woocommerce automation, products recommendation, related products, upsell
 Donate link: http://sharkthemes.com
 Requires PHP: 5.6
 Requires at least: 5.0
-Tested up to: 6.8.2
-Stable tag: 2.0.6
+Tested up to: 6.9
+Stable tag: 2.0.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -101,6 +101,10 @@ The free version automatically matches your shop page layout, ensuring a seamles
 The Pro version offers Gutenberg blocks, AI-style cart item suggestions, advanced recommendation controls, extended options for customizing and filtering related products on single product pages, and more versatile settings in the Elementor widget and shortcode for greater flexibility in displaying Smart Related Products.
 
 == Changelog ==
+
+= 2.0.7 Dec 25 2025 =
+* [Checked] Compatibility with latest WordPress version
+* [Updated] minor css for admin page.
 
 = 2.0.6 Aug 06 2025 =
 * [Updated] Structure code for better theme compatibility and seamless design integration.

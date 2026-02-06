@@ -68,7 +68,7 @@ class ST_Woo_AI_Rel_Products_Core {
 	 * admin Enqueue scripts
 	 */
 	public function st_woo_ai_rel_products_admin_enqueue( $hook ) {
-		if ( in_array( $hook, array( 'toplevel_page_ai-related-products', 'smart-related-products-pro_page_ai-related-products-shortcode' ) ) ) :
+		if ( in_array( $hook, array( 'toplevel_page_ai-related-products', 'smart-related-products_page_ai-related-products-shortcode' ) ) ) :
 			wp_enqueue_style( 'st-woo-ai-rel-products-admin', ST_WOO_AI_REL_PRODUCTS_URL_PATH . 'assets/css/admin.css' );
 		endif;
 	

@@ -3,11 +3,11 @@
  * Plugin Name: Smart Related Products – AI-Inspired Recommendations for WooCommerce
  * Plugin URI: https://www.sharkthemes.com
  * Description: Smart Related Products – AI-Inspired Recommendations for WooCommerce helps boost your sales with intelligent, behavior-driven product suggestions tailored to each customer’s interests. This powerful WooCommerce add-on uses a smart algorithm to display relevant, frequently bought together, and personalized products throughout your store. By showing the right products in the right places, it enhances engagement, increases conversions, and drives steady sales growth. Formerly known as "AI Related Products – WooCommerce Recommendation".
- * Version: 2.0.6
+ * Version: 2.0.7
  * Author: Shark Themes
  * Author URI: https://sharkthemes.com
  * Requires at least: 5.6
- * Tested up to: 6.8.2
+ * Tested up to: 6.9
  * Requires Plugins: woocommerce
  * License: GNU General Public License v3 or later
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
