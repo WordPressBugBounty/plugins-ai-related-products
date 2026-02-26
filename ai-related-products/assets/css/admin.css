@@ -70,7 +70,7 @@ input[type=number].st-number {
     border-radius: 10px;
 }
 input[type=text].st-text {
-    width: 300px;
+    width: 350px;
     border: 2px solid #2d2d2d;
     font-weight: 500;
     font-size: 16px;
@@ -80,6 +80,7 @@ label.st-text-label,
 label.st-number-label {
     position: relative;
 }
+input#st_woo_ai_rel_products_cart_page_rel_products::after,
 label.st-text-label::after,
 label.st-number-label::after {
     content: '';
@@ -91,6 +92,7 @@ label.st-number-label::after {
     font-weight: 500;
     width: 500px;
     color: #555;
+    line-height: 1.3;
 }
 label.st-number-label.st_woo_ai_rel_products_ordered_ref_single_rel_products::after {
     content: 'Set the value to "1" to filter products based on the most recently ordered or purchased item, "2" for the two most recent items, and so on. \A Leave it empty to include all ordered or purchased items.';
@@ -117,7 +119,12 @@ label.st_woo_ai_rel_products_number_collab_filter_products::after {
     white-space: pre;
 }
 label.st_woo_ai_rel_products_label_collab_filter_products::after {
-    content: '"Active Product Name"'
+    content: '"Use %s for Reference Product Name"';
+    white-space: pre;
+}
+input#st_woo_ai_rel_products_cart_page_rel_products::after {
+    content: 'Note: For FSE themes, navigate to Cart Page -> Edit Page. \A Then, add the Smart Related Products Block on the page.';
+    white-space: pre;
 }
 form {
     position: relative;

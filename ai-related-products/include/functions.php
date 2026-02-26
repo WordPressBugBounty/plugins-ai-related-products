@@ -9,7 +9,6 @@
 if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
-
 class ST_Woo_AI_Rel_Products_Control
 {
 
@@ -29,7 +28,7 @@ class ST_Woo_AI_Rel_Products_Control
 	{
 		// change heading for related products
 		add_filter('woocommerce_product_related_products_heading', array($this, 'single_rel_products_heading'));
-		
+
 		// // remove action for single block template
 		// remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
@@ -41,12 +40,51 @@ class ST_Woo_AI_Rel_Products_Control
 
 		// filter for related products
 		add_filter('woocommerce_related_products', array($this, 'single_rel_products_replacement_args'), 100, 3);
+		add_filter('query_loop_block_query_vars', array($this, 'single_rel_products_block_args'), 100, 3);
 
 		// show related products in cart page
 		$enable_in_cart_page = get_option('st_woo_ai_rel_products_cart_page_rel_products', false);
 		if ($enable_in_cart_page) {
-			add_action('woocommerce_after_cart', array($this, 'single_output_related_products'), 20);
+			// add_action('woocommerce_after_cart', array($this, 'single_output_related_products'), 20);
+			if ($this->is_block_cart()) {
+				// Block-based cart — use render_block filter
+				add_filter('render_block', array($this, 'inject_recommendation_after_block_cart'), 10, 2);
+			} else {
+				// For classic PHP template cart
+				add_action('woocommerce_after_cart', array($this, 'single_output_related_products'), 30);
+			}
 		}
+	}
+
+	/**
+	 * Check if WooCommerce is using the Block-based Cart
+	 */
+	private function is_block_cart()
+	{
+		$cart_page_id = wc_get_page_id('cart');
+		if (!$cart_page_id) {
+			return false;
+		}
+
+		$post = get_post($cart_page_id);
+		if (!$post) {
+			return false;
+		}
+
+		return has_block('woocommerce/cart', $post);
+	}
+
+	public function inject_recommendation_after_block_cart($block_content, $block)
+	{
+		if ($block['blockName'] === 'woocommerce/cart') {
+			ob_start();
+			$this->single_output_related_products();
+			$custom_content = ob_get_clean();
+
+			$block_content .= $custom_content;
+		}
+
+		return $block_content;
 	}
 
 	/*
@@ -220,8 +258,8 @@ class ST_Woo_AI_Rel_Products_Control
 			'exclude' => array($product_id),
 			'meta_query' => array(
 				array(
-					'key'     => '_stock_status',
-					'value'   => 'instock',
+					'key' => '_stock_status',
+					'value' => 'instock',
 					'compare' => '='
 				)
 			)
@@ -242,8 +280,31 @@ class ST_Woo_AI_Rel_Products_Control
 
 		// Extract post IDs from the query result
 		$related_posts = wp_list_pluck($related_posts_query, 'ID');
-
 		return $related_posts;
+	}
+
+	/**
+	 * Single related products block args
+	 *
+	 * @package Smart Related Products
+	 * @since 1.0.0
+	 */
+	public function single_rel_products_block_args($query, $block, $page)
+	{
+		if (
+			isset($block->context['query']['isProductCollectionBlock'])
+			&& $block->context['query']['isProductCollectionBlock']
+		) {
+
+			$product_ids = $this->single_rel_products_replacement_args(array(), $page, $query);
+
+			if (!empty($product_ids)) {
+				$query['post__in'] = $product_ids;
+				$query['orderby'] = 'post__in';
+			}
+		}
+
+		return $query;
 	}
 
 	/**

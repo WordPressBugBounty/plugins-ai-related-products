@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Smart Related Products 1.0.0\n"
-"POT-Creation-Date: 2025-06-13 02:31+0545\n"
+"POT-Creation-Date: 2026-02-26 14:23+0000\n"
 "PO-Revision-Date: 2020-07-21 14:18+0545\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -98,7 +98,7 @@ msgstr ""
 msgid "This message is only visible in editor"
 msgstr ""
 
-#: include/functions.php:273 include/functions.php:288 include/setting.php:279
+#: include/functions.php:334 include/functions.php:349 include/setting.php:279
 msgid "You May Also Like"
 msgstr ""
 
