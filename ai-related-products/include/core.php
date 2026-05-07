@@ -21,7 +21,6 @@ class ST_Woo_AI_Rel_Products_Core {
 		if ( did_action( 'elementor/loaded' ) ) {
 			add_action( 'elementor/widgets/widgets_registered', array( $this, 'st_woo_ai_rel_products_elementor_widget' ) );
 		}
-		
 	}
 
 	/**

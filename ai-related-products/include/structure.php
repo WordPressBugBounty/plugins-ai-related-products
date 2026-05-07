@@ -26,7 +26,7 @@ function st_woo_ai_rel_products_shortcode_main_wrapper_open() { ?>
 
 // shortcode products ul start
 function st_woo_ai_rel_products_shortcode_ul_open( $column = 3 ) { ?>
-    <ul class="products column-<?php echo absint( $column ); ?>" data-products="type-1">
+    <ul class="products grid column-<?php echo absint( $column ); ?>" data-products="type-1">
 <?php }
 
 // shortcode products ul close
